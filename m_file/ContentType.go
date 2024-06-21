@@ -1,5 +1,6 @@
 package m_file
 
+// 根据文件内容获取文件后缀名
 func ContentToExtName(lType string) string {
 	ext := "avi"
 	switch lType {

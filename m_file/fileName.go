@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/handy-golang/go-tools/m_count"
+	"github.com/handy-golang/go-tools/m_encrypt"
 	"github.com/handy-golang/go-tools/m_path"
 	"github.com/handy-golang/go-tools/m_str"
 )
@@ -24,13 +25,14 @@ type GetNameType struct {
 	SavePath string
 }
 
-func GetName(opt GetNameOpt) string {
+// 获取当前可用的文件名
+func GetSaveFileName(opt GetNameOpt) string {
 	extName := path.Ext(opt.FileName)                      // 后缀名
 	name := strings.Replace(opt.FileName, extName, "", -1) // 把后缀名换成空字符串
 
-	// if opt.RandName {
-	// 	name = mEncrypt.RandStr(5)
-	// }
+	if opt.RandName {
+		name = m_encrypt.TimeID()
+	}
 
 	var Obj GetNameType
 	Obj.Count = "0"
