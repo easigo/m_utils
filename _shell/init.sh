@@ -25,13 +25,9 @@ NowPath=$(pwd)
 # 最终的输出目录
 OutPutPath="${NowPath}/dist"
 
-# 远程仓库目录地址
-GitRemotePackagePath="git@github.com:mo7-web/mo7-web.github.io.git"
-
 # Deploy 完成之后的输出
 ShellEndInfo="
-https://github.com/mo7-web/mo7-web.github.io
-https://blog.mo7.cc
+https://github.com/handy-golang/go-tools
 "
 
 echo "
@@ -39,7 +35,6 @@ echo "
 
 当前目录: ${NowPath}
 输出目录: ${OutPutPath}
-远程仓库目录: ${GitRemotePackagePath}
 完成之后的输出: ${ShellEndInfo}
 
 "
