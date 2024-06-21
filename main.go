@@ -1,6 +1,6 @@
 package main
 
-import "go-tools/internal/test_case"
+import "github.com/handy-golang/go-tools/internal/test_case"
 
 func main() {
 

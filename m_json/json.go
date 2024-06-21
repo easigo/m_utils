@@ -3,8 +3,8 @@ package m_json
 import (
 	"bytes"
 	"encoding/json"
-	"go-tools/m_str"
 
+	"github.com/handy-golang/go-tools/m_str"
 	jsoniter "github.com/json-iterator/go"
 )
 

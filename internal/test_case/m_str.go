@@ -2,7 +2,8 @@ package test_case
 
 import (
 	"fmt"
-	"go-tools/m_str"
+
+	"github.com/handy-golang/go-tools/m_str"
 )
 
 func Test_m_str() {

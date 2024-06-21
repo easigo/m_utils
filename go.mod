@@ -1,4 +1,4 @@
-module go-tools
+module github.com/handy-golang/go-tools
 
 go 1.22.4
 
