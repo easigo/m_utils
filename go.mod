@@ -29,6 +29,7 @@ require (
 	github.com/temoto/robotstxt v1.1.1 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.54.0 // indirect
+	github.com/wenlng/go-user-agent v1.0.2 // indirect
 	golang.org/x/net v0.25.0 // indirect
 	golang.org/x/text v0.15.0 // indirect
 	google.golang.org/appengine v1.6.6 // indirect
