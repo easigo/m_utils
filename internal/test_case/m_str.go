@@ -7,13 +7,13 @@ import (
 
 func Test_m_str() {
 
-	// toStr()
+	toStr()
 
-	// joinStr()
+	joinStr()
 
-	// temp()
+	temp()
 
-	strFuzzy()
+	fuzzy()
 }
 
 func toStr() {
@@ -57,7 +57,7 @@ app.port = ${appPort}
 	fmt.Println("temp", s)
 }
 
-func strFuzzy() {
+func fuzzy() {
 	// str := m_str.Fuzzy("15309140739")
 
 	str := m_str.GetKeyFuzzy("123456789", 3, 5)
