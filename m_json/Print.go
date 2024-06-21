@@ -11,3 +11,10 @@ func Println(data any) string {
 	log.Println(jsonStr)
 	return jsonStr
 }
+
+// byte 进行 json 格式 打印
+func PrintlnForByte(jsonByte []byte) string {
+	jsonStr := JsonFormat(jsonByte)
+	log.Println(jsonStr)
+	return jsonStr
+}

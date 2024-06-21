@@ -1,0 +1,10 @@
+{
+  "name": "go-tools",
+  "version": "1.0.0",
+  "Port": 17353,
+  "scripts": {
+    "sync": "./_shell/git-sync.sh",
+    "crun": "rm -rf ./logs && rm -rf ./jsonData && go run main.go  "
+  },
+  "dependencies": {}
+}
