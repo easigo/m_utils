@@ -24,7 +24,7 @@ func ToStr(data any) string {
 	return jsonStr
 }
 
-// byte 格式化 json 体
+// byte 格式化成 json 体
 func JsonFormat(jsonByte []byte) string {
 	var out bytes.Buffer
 	json.Indent(&out, jsonByte, "", " ")
