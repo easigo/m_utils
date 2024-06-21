@@ -28,7 +28,7 @@ func Test_m_file() {
 
 	m_file.DownFile(
 		m_file.DownFileOpt{
-			Url: "https://github.com/gocolly/colly",
+			Url: "http://file.mo7.cc/api/public/bz",
 		},
 	)
 

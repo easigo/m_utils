@@ -2,6 +2,7 @@ package m_file
 
 import (
 	"bytes"
+	"fmt"
 	"io"
 	"net"
 	"net/http"
@@ -13,6 +14,7 @@ import (
 	"github.com/gocolly/colly/v2"
 	"github.com/handy-golang/go-tools/m_encrypt"
 	"github.com/handy-golang/go-tools/m_path"
+	"github.com/handy-golang/go-tools/m_str"
 )
 
 type DownFileOpt struct {
@@ -28,6 +30,8 @@ func DownFile(opt DownFileOpt) (resData string, resErr error) {
 	if len(SavePath) < 1 {
 		SavePath = "."
 	}
+
+	// 目录不存在则新建目录
 	isLogPath := m_path.Exists(SavePath)
 	if !isLogPath {
 		os.Mkdir(SavePath, 0o777)
@@ -36,6 +40,7 @@ func DownFile(opt DownFileOpt) (resData string, resErr error) {
 	SavePath, _ = filepath.Abs(SavePath)
 
 	SaveName := opt.SaveName
+	// 没有文件名则随机文件名
 	if len(SaveName) < 2 {
 		SaveName = GetSaveFileName(GetNameOpt{
 			FileName: m_encrypt.TimeID(),
@@ -61,13 +66,15 @@ func DownFile(opt DownFileOpt) (resData string, resErr error) {
 		extName := path.Ext(SaveName) // 后缀名
 		if len(extName) < 1 {
 			extName = ContentToExtName(r.Headers.Get("Content-Type"))
+
+			fmt.Println(r.Headers.Get("Content-Type"))
 			if len(extName) > 0 {
-				extName = "." + extName
+				extName = m_str.Join(".", extName)
 			}
-			fileName = fileName + extName
+			fileName = m_str.Join(fileName, extName)
 		}
 
-		SaveFile := SavePath + "/" + fileName
+		SaveFile := m_str.Join(SavePath, "/", fileName)
 		f, err := os.Create(SaveFile)
 		if err != nil {
 			resErr = err

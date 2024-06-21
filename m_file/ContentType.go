@@ -1,8 +1,10 @@
 package m_file
 
+import "strings"
+
 // 根据文件内容获取文件后缀名
 func ContentToExtName(lType string) string {
-	ext := "avi"
+	ext := ""
 	switch lType {
 
 	case "image/bmp":
@@ -13,6 +15,10 @@ func ContentToExtName(lType string) string {
 
 	case "image/jpeg":
 		ext = "jpeg"
+
+	case "image/webp":
+		ext = "webp"
+
 	case "image/png":
 		ext = "png"
 
@@ -61,6 +67,10 @@ func ContentToExtName(lType string) string {
 	case "video/x-matroska":
 		ext = "mkv"
 
+	}
+
+	if strings.Contains(lType, "text/html") {
+		ext = "html"
 	}
 
 	return ext
