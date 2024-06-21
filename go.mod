@@ -7,7 +7,9 @@ require (
 	github.com/gocolly/colly/v2 v2.1.0
 	github.com/google/uuid v1.6.0
 	github.com/json-iterator/go v1.1.12
+	github.com/robfig/cron/v3 v3.0.1
 	github.com/shopspring/decimal v1.4.0
+	github.com/wenlng/go-user-agent v1.0.2
 )
 
 require (
@@ -29,7 +31,6 @@ require (
 	github.com/temoto/robotstxt v1.1.1 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.54.0 // indirect
-	github.com/wenlng/go-user-agent v1.0.2 // indirect
 	golang.org/x/net v0.25.0 // indirect
 	golang.org/x/text v0.15.0 // indirect
 	google.golang.org/appengine v1.6.6 // indirect
