@@ -13,21 +13,18 @@ a := []rune("mo7欢迎你")
 a := []byte("mo7欢迎你")
 a := 10.97
 a := os.PathSeparator
-
 str := m_str.ToStr(a)
 */
 func ToStr(p any) string {
 	// fmt.Println("type: ", reflect.TypeOf(p))
 	returnStr := ""
 	switch p := p.(type) {
-	case int8:
-		returnStr = fmt.Sprint(p)
-	case int16:
-		returnStr = fmt.Sprint(p)
+	case []int32:
+		returnStr = string(p)
+	case []uint8:
+		returnStr = string(p)
 	case int32:
-		returnStr = fmt.Sprint(p)
-	case int64:
-		returnStr = fmt.Sprint(p)
+		returnStr = string(p)
 	case uint8:
 		returnStr = string(p)
 	default:

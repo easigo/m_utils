@@ -7,27 +7,29 @@ import (
 
 func Test_m_str() {
 
-	toStr()
+	// toStr()
 
-	joinStr()
+	// joinStr()
 
-	temp()
+	// temp()
+
+	strFuzzy()
 }
 
 func toStr() {
 	// ===== 任意类型转字符串
 	// var a = []rune("mo7欢迎你")
 	// var a = []byte("mo7欢迎你")
-	// var a = 10.97
+	var a = 10.97
 	// var a = os.PathSeparator
 	// var a = map[string]any{
 	// 	"name": "张三",
 	// 	"age":  24,
 	// 	"sex":  '男',
 	// }
-	var a = []int32{1, 2, 3, 4, 5}
 	str := m_str.ToStr(a)
-	fmt.Println("str: ", str)
+	// fmt.Println("a: ", a)
+	fmt.Println("str: ", str == " ")
 }
 
 func joinStr() {
@@ -53,4 +55,12 @@ app.port = ${appPort}
 	s := m_str.Temp(config, dev)
 
 	fmt.Println("temp", s)
+}
+
+func strFuzzy() {
+	// str := m_str.Fuzzy("15309140739")
+
+	str := m_str.GetKeyFuzzy("123456789", 3, 5)
+
+	fmt.Println(str)
 }
