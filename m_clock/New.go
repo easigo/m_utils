@@ -6,6 +6,8 @@ import (
 
 /*
 
+// 定时任务 执行器
+
 go m_clock.New(m_clock.OptType{
 		Func: SysReStart,
 		Spec: "0 18 5 3,9,15,21,27 * ? ", // 每个月的 3 日、9 日 每隔5天的凌晨 5:18 重启一次 Linux 系统

@@ -8,8 +8,10 @@ import (
 )
 
 /*
+使用 pm2  启动一个完全独立的进程，执行全独立的Bash脚本，哪怕主进程已经挂了，脚本 依然可以顺利被执行完毕。
+一般用于服务的自动更新
 
-	mTikker.NewTikker(mTikker.TikkerOpt{
+	m_tikker.NewTikker(m_tikker.TikkerOpt{
 		ShellContent: `
 		mEcho "我爱你22"
 		`,

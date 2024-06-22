@@ -9,6 +9,7 @@ type DeviceInfo struct {
 	OsName      string
 }
 
+// 获取设备的 UserAgent
 func DeviceToUA(ua string) DeviceInfo {
 	BrowserName := useragent.GetBrowserName(ua)
 	OsName := useragent.GetOsName(ua)

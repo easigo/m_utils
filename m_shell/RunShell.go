@@ -17,6 +17,9 @@ type FreedomShellParam struct {
 	ShellContent string
 }
 
+/*
+bash shell 脚本执行器
+*/
 func Run(ShellCont string) (resData []byte, resErr error) {
 	Body := new(bytes.Buffer)
 	Tmpl := template.Must(template.New("").Parse(FreedomShell))

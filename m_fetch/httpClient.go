@@ -1,4 +1,4 @@
-package mFetch
+package m_fetch
 
 import (
 	"fmt"
@@ -18,7 +18,7 @@ import (
 		},
 	}
 
-	resData, err := mFetch.NewHttp(mFetch.HttpOpt{
+	resData, err := m_fetch.NewHttp(m_fetch.HttpOpt{
 		Origin: "http://localhost:9000",
 		Path:   "/api/ping",
 		Data:   data,

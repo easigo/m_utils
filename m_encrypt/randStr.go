@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+// [a-z0-9] 中随机一个字符串
 func RandStr(length int) string {
 	baseStr := "0123456789abcdefghijklmnopqrstuvwxyz"
 

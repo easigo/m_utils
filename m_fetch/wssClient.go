@@ -1,4 +1,4 @@
-package mFetch
+package m_fetch
 
 import (
 	"fmt"
@@ -10,7 +10,7 @@ import (
 
 /*
 
-	wssConn := mFetch.NewWss(mFetch.WssOpt{
+	wssConn := m_fetch.NewWss(m_fetch.WssOpt{
 		Url: "ws://127.0.0.1:8999/api/wss",
 		Event: func(s string, a any) {
 			if s == "close" || s == "err" {

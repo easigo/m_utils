@@ -15,6 +15,7 @@ type IPAddressType struct {
 	Operators string
 }
 
+// 获取IP地址归属
 func GetIPS(ips []string) []IPAddressType {
 	rList := []IPAddressType{}
 	for _, val := range ips {

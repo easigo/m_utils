@@ -5,10 +5,13 @@ import (
 )
 
 /*
+// 间隔执行器
+
 m_cycle.New(m_cycle.Opt{
 	Func:      LogInit,
 	SleepTime: time.Hour * 24,  // 每24 小时 执行一次
 }).Start()
+
 */
 
 type Cycle struct {
