@@ -7,5 +7,9 @@
 使用方式:
 
 ```bash
+go get github.com/handy-golang/go-tools
+```
+
+```bash
 go get -u github.com/handy-golang/go-tools@v1.0.1
 ```
