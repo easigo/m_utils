@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/gocolly/colly/v2"
+	"github.com/gocolly/colly/v2/proxy"
 	"github.com/handy-golang/go-tools/m_str"
 	"github.com/handy-golang/go-tools/m_url"
 	jsoniter "github.com/json-iterator/go"
@@ -38,11 +39,12 @@ import (
 */
 
 type HttpOpt struct {
-	Origin string
-	Path   string
-	Data   []byte
-	Header map[string]string
-	Event  func(string, any) // s1 = succeed , err
+	Origin    string
+	Path      string
+	Data      []byte
+	Header    map[string]string
+	Event     func(string, any) // s1 = succeed , err
+	ProxyURLs []string          //  ["socks5://127.0.0.1:1337", "socks5://127.0.0.1:1338"]
 }
 
 type Http struct {
@@ -50,6 +52,7 @@ type Http struct {
 	Data   []byte
 	Header map[string]string
 	Event  func(string, any)
+	C      *colly.Collector
 }
 
 func NewHttp(opt HttpOpt) (_this *Http) {
@@ -76,6 +79,20 @@ func NewHttp(opt HttpOpt) (_this *Http) {
 		_this.Event = func(s1 string, s2 any) {}
 	}
 
+	_this.C = colly.NewCollector()
+
+	if len(opt.ProxyURLs) > 0 {
+		// 设置代理
+		rp, err := proxy.RoundRobinProxySwitcher(
+			opt.ProxyURLs...,
+		)
+
+		if err != nil {
+			_this.Event("proxy err", err)
+		}
+		_this.C.SetProxyFunc(rp)
+	}
+
 	return
 }
 
@@ -99,9 +116,7 @@ func (_this *Http) Get() (resData []byte, resErr error) {
 	// 处理参数请求
 	_this.DisposeGetParam()
 
-	c := colly.NewCollector()
-
-	c.OnRequest(func(r *colly.Request) {
+	_this.C.OnRequest(func(r *colly.Request) {
 		r.Headers.Set("Content-Type", "application/json; charset=utf-8")
 		r.Headers.Set("User-Agent", "goTools - github.com/EasyGolang/goTools")
 		// 添加header头
@@ -110,17 +125,17 @@ func (_this *Http) Get() (resData []byte, resErr error) {
 		}
 	})
 
-	c.OnResponse(func(r *colly.Response) {
+	_this.C.OnResponse(func(r *colly.Response) {
 		resData = r.Body
 		_this.Event("succeed", resData)
 	})
-	c.OnError(func(r *colly.Response, errStr error) {
+	_this.C.OnError(func(r *colly.Response, errStr error) {
 		resData = r.Body
 		resErr = errStr
 		_this.Event("err", errStr)
 	})
 
-	c.Visit(_this.Url)
+	_this.C.Visit(_this.Url)
 
 	return
 }
@@ -128,9 +143,8 @@ func (_this *Http) Get() (resData []byte, resErr error) {
 // Post
 
 func (_this *Http) Post() (resData []byte, resErr error) {
-	c := colly.NewCollector()
 
-	c.OnRequest(func(r *colly.Request) {
+	_this.C.OnRequest(func(r *colly.Request) {
 		r.Headers.Set("Content-Type", "application/json; charset=utf-8")
 		r.Headers.Set("User-Agent", "goTools - github.com/EasyGolang/goTools")
 		// 添加header头
@@ -139,17 +153,17 @@ func (_this *Http) Post() (resData []byte, resErr error) {
 		}
 	})
 
-	c.OnResponse(func(r *colly.Response) {
+	_this.C.OnResponse(func(r *colly.Response) {
 		resData = r.Body
 		_this.Event("succeed", resData)
 	})
-	c.OnError(func(r *colly.Response, err error) {
+	_this.C.OnError(func(r *colly.Response, err error) {
 		resData = r.Body
 		resErr = err
 		_this.Event("err", err)
 	})
 
-	c.PostRaw(_this.Url, _this.Data)
+	_this.C.PostRaw(_this.Url, _this.Data)
 
 	return
 }
