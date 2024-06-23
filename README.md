@@ -11,5 +11,5 @@ go get github.com/handy-golang/go-tools
 ```
 
 ```bash
-go get -u github.com/handy-golang/go-tools@v1.0.1
+go get -u github.com/handy-golang/go-tools@v1.0.2
 ```

@@ -22,6 +22,17 @@ func Write(fileName string, content string) {
 	}
 }
 
+func WriteByte(fileName string, content []byte) {
+	f, err := os.OpenFile(fileName, os.O_WRONLY|os.O_TRUNC|os.O_CREATE, 0o777)
+	if err != nil {
+		//
+	} else {
+		n, _ := f.Seek(0, io.SeekCurrent)
+		f.WriteAt(content, n)
+		defer f.Close()
+	}
+}
+
 // 获取一个文件的类型
 func GetContentType(fileName string) string {
 	if !m_path.IsFile(fileName) {
