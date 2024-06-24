@@ -6,31 +6,46 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 
 	"github.com/handy-golang/go-tools/m_path"
 )
 
 // 写入文件内容 fileName 为文件的路径
-func Write(fileName string, content string) {
-	f, err := os.OpenFile(fileName, os.O_WRONLY|os.O_TRUNC|os.O_CREATE, 0o777)
+func Write(filePath string, content string) (resErr error) {
+	resErr = nil
+	dir, _ := filepath.Split(filePath) //  获取目录
+	isExist := m_path.IsExist(dir)
+	if !isExist {
+		os.MkdirAll(dir, os.ModePerm)
+	}
+	f, err := os.OpenFile(filePath, os.O_WRONLY|os.O_TRUNC|os.O_CREATE, 0o777)
 	if err != nil {
-		//
+		resErr = err
 	} else {
 		n, _ := f.Seek(0, io.SeekCurrent)
 		f.WriteAt([]byte(content), n)
 		defer f.Close()
 	}
+	return
 }
 
-func WriteByte(fileName string, content []byte) {
-	f, err := os.OpenFile(fileName, os.O_WRONLY|os.O_TRUNC|os.O_CREATE, 0o777)
+func WriteByte(filePath string, content []byte) (resErr error) {
+	resErr = nil
+	dir, _ := filepath.Split(filePath) //  获取目录
+	isExist := m_path.IsExist(dir)
+	if !isExist {
+		os.MkdirAll(dir, os.ModePerm)
+	}
+	f, err := os.OpenFile(filePath, os.O_WRONLY|os.O_TRUNC|os.O_CREATE, 0o777)
 	if err != nil {
-		//
+		resErr = err
 	} else {
 		n, _ := f.Seek(0, io.SeekCurrent)
 		f.WriteAt(content, n)
 		defer f.Close()
 	}
+	return
 }
 
 // 获取一个文件的类型

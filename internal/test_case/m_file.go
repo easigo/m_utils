@@ -1,12 +1,10 @@
 package test_case
 
-import (
-	"github.com/handy-golang/go-tools/m_file"
-)
+import "github.com/handy-golang/go-tools/m_file"
 
 func Test_m_file() {
 
-	// m_file.Write("test.txt", "hello world")
+	m_file.WriteByte("/root/handy-golang/go-tools/data/111/222/333/444/555/test.txt", []byte("hello world"))
 
 	// filetype := m_file.GetContentType("test.txt")
 
@@ -26,10 +24,10 @@ func Test_m_file() {
 
 	// fmt.Println("fileName", m_str.ToStr(fileName))
 
-	m_file.DownFile(
-		m_file.DownFileOpt{
-			Url: "http://file.mo7.cc/api/public/bz",
-		},
-	)
+	// m_file.DownFile(
+	// 	m_file.DownFileOpt{
+	// 		Url: "http://file.mo7.cc/api/public/bz",
+	// 	},
+	// )
 
 }

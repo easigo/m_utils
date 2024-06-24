@@ -16,11 +16,11 @@ func main() {
 	// test_case.Test_m_str()
 
 	// 测试 m_count 库
-	test_case.Test_m_count()
+	// test_case.Test_m_count()
 
 	// 测试 m_path 库
 	// test_case.Test_m_path()
 
 	// 测试 m_file 库
-	// test_case.Test_m_file()
+	test_case.Test_m_file()
 }
