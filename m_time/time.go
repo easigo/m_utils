@@ -62,7 +62,7 @@ func ToUnixMsec(ms time.Time) int64 {
 	return ms.UnixNano() / 1e6
 }
 
-// 2020-12-03 转为 时间戳  mTime.TimeParse(mTime.LaySP_ss, "2023-05-06 18:56:43")
+// 2020-12-03 转为 时间戳  m_time.TimeParse(m_time.LaySP_ss, "2023-05-06 18:56:43")
 func TimeParse(layout, val string) (resData int64) {
 	formatTime, err := time.ParseInLocation(layout, val, time.Local)
 	if err != nil {
