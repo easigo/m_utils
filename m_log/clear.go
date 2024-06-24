@@ -28,7 +28,7 @@ func Clear(opt ClearParam) {
 		logPath = opt.Path
 	}
 
-	isLogPath := m_path.Exists(logPath)
+	isLogPath := m_path.IsExist(logPath)
 	if !isLogPath {
 		return
 	}

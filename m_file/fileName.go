@@ -60,7 +60,7 @@ func (obj *GetNameType) FileThere() bool {
 		obj.ExtName,
 	)
 
-	isFilePath := m_path.Exists(filePath)
+	isFilePath := m_path.IsExist(filePath)
 
 	return isFilePath
 }

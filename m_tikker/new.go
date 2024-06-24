@@ -36,7 +36,7 @@ func NewTikker(opt TikkerOpt) *TikkerObj {
 
 	// 生成脚本执行目录
 	Path := m_path.Dir.Home
-	isPath := m_path.Exists(Path)
+	isPath := m_path.IsExist(Path)
 	if !isPath {
 		// 不存在则创建目录
 		os.MkdirAll(Path, 0o777)
@@ -49,7 +49,7 @@ func NewTikker(opt TikkerOpt) *TikkerObj {
 	}
 
 	// 创建日志目录
-	isLogPath := m_path.Exists(LogPath)
+	isLogPath := m_path.IsExist(LogPath)
 	if !isLogPath {
 		// 不存在则创建 logs 目录
 		os.MkdirAll(LogPath, 0o777)

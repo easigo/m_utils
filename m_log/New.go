@@ -22,7 +22,7 @@ func NewLog(param NewLogParam) *log.Logger {
 	}
 
 	// 检测 logs 目录
-	isLogPath := m_path.Exists(FilePath)
+	isLogPath := m_path.IsExist(FilePath)
 	if !isLogPath {
 		// 不存在则创建 logs 目录
 		os.Mkdir(FilePath, 0o777)

@@ -39,7 +39,7 @@ type TinyOpt struct {
 }
 
 func Tinypng(opt TinyOpt) (resData string, resErr error) {
-	isPath := m_path.Exists(opt.Src)
+	isPath := m_path.IsExist(opt.Src)
 	isFile := m_path.IsFile(opt.Src)
 
 	if isPath && isFile {

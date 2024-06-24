@@ -32,7 +32,7 @@ func DownFile(opt DownFileOpt) (resData string, resErr error) {
 	}
 
 	// 目录不存在则新建目录
-	isLogPath := m_path.Exists(SavePath)
+	isLogPath := m_path.IsExist(SavePath)
 	if !isLogPath {
 		os.Mkdir(SavePath, 0o777)
 	}
