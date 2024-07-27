@@ -13,5 +13,5 @@ go get github.com/handy-golang/go-tools
 ## 升级使用最新发布版本
 
 ```bash
-go get -u github.com/handy-golang/go-tools@v1.0.4
+go get -u github.com/handy-golang/go-tools@v1.0.5
 ```
