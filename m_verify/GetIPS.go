@@ -1,4 +1,4 @@
-package mVerify
+package m_verify
 
 import (
 	_ "embed"

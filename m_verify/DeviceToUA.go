@@ -1,4 +1,4 @@
-package mVerify
+package m_verify
 
 import (
 	useragent "github.com/wenlng/go-user-agent"

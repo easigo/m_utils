@@ -1,4 +1,4 @@
-package mVerify
+package m_verify
 
 import (
 	"github.com/handy-golang/go-tools/m_count"
