@@ -1,6 +1,6 @@
 module github.com/handy-golang/go-tools
 
-go 1.23
+go 1.25
 
 require (
 	github.com/fasthttp/websocket v1.5.10
